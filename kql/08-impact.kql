@@ -1,0 +1,5 @@
+// Step 8 - Impact: mail sent from the compromised mailbox with an external Reply-To
+EmailEvents
+| where SenderFromAddress == "ana.ruiz@contoso.com" and Timestamp >= datetime(2026-09-14 13:21:15)
+| where isnotempty(ReplyToAddress) and not(ReplyToAddress endswith "@contoso.com")
+| project Timestamp, RecipientEmailAddress, EmailDirection, Subject, ReplyToAddress

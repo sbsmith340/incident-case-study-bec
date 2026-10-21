@@ -1,0 +1,7 @@
+// Step 9 - Rule out the earlier password spray
+let attackerIps = dynamic(["198.51.100.23", "198.51.100.41"]);
+SigninLogs
+| where IPAddress !in (attackerIps)
+| summarize Failures = countif(ResultType != "0"), Successes = countif(ResultType == "0"),
+            Accounts = dcount(UserPrincipalName), Last = max(TimeGenerated) by IPAddress
+| where Accounts >= 10 and Failures >= 10

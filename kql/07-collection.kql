@@ -1,0 +1,5 @@
+// Step 7 - Collection: mailbox access from attacker IPs, by client app
+let attackerIps = dynamic(["198.51.100.23", "198.51.100.41"]);
+OfficeActivity
+| where Operation == "MailItemsAccessed" and UserId == "ana.ruiz@contoso.com" and ClientIP in (attackerIps)
+| summarize Events = count(), First = min(TimeGenerated), Last = max(TimeGenerated) by AppId

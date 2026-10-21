@@ -1,0 +1,6 @@
+// Step 3 - Did the attacker infrastructure touch any other account?
+let attackerIps = dynamic(["198.51.100.23", "198.51.100.41"]);
+SigninLogs
+| where IPAddress in (attackerIps)
+| summarize Attempts = count(), Successes = countif(ResultType == "0"), First = min(TimeGenerated), Last = max(TimeGenerated)
+    by UserPrincipalName, IPAddress

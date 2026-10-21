@@ -1,0 +1,13 @@
+// Step 5 - Campaign scope: recipients, delivery outcome, and who clicked
+let sender = "docs-share@fabrikam-invoices.com";
+let url = "https://fabrikarn-sharepoint.com/s/q3-payment-schedule";
+let campaign = EmailEvents
+    | where SenderFromAddress == sender or Url == url
+    | project NetworkMessageId, RecipientEmailAddress, DeliveryAction;
+campaign
+| join kind=leftouter (UrlClickEvents | project NetworkMessageId, ActionType, IsClickedThrough) on NetworkMessageId
+| summarize Recipients = dcount(RecipientEmailAddress),
+            Delivered = dcountif(RecipientEmailAddress, DeliveryAction == "Delivered"),
+            Junked = dcountif(RecipientEmailAddress, DeliveryAction == "Junked"),
+            ClickedThrough = make_set_if(RecipientEmailAddress, IsClickedThrough == "True" or ActionType == "ClickAllowed"),
+            ClickBlocked = make_set_if(RecipientEmailAddress, ActionType == "ClickBlocked")

@@ -1,0 +1,8 @@
+// Step 4 - What did the victim click in the hour before the first malicious sign-in?
+let victim = "ana.ruiz@contoso.com";
+let firstBad = datetime(2026-09-14 13:21:15);
+UrlClickEvents
+| where AccountUpn == victim and Timestamp between ((firstBad - 1h) .. firstBad)
+| join kind=inner (EmailEvents | project NetworkMessageId, SenderFromAddress, Subject, DeliveryAction) on NetworkMessageId
+| project Timestamp, Url, ActionType, IsClickedThrough, SenderFromAddress, Subject, DeliveryAction
+| order by Timestamp desc

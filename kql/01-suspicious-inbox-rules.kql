@@ -1,0 +1,11 @@
+// Step 1 - Alert triage: inbox rules that hide finance-related mail
+OfficeActivity
+| where TimeGenerated between (datetime(2026-09-14) .. datetime(2026-09-16))
+| where Operation in ("New-InboxRule", "Set-InboxRule")
+| extend P = parse_json(Parameters)
+| mv-apply P on (summarize Params = make_bag(bag_pack(tostring(P.Name), tostring(P.Value))))
+| extend Words = tolower(strcat(tostring(Params.SubjectOrBodyContainsWords), tostring(Params.BodyContainsWords)))
+| where Words has_any ("invoice", "payment", "bank", "wire", "remit")
+| where tostring(Params.MoveToFolder) in ("RSS Feeds", "RSS Subscriptions", "Conversation History", "Archive")
+     or isnotempty(Params.DeleteMessage)
+| project TimeGenerated, UserId, ClientIP, RuleName = tostring(Params.Name), Words, Folder = tostring(Params.MoveToFolder)

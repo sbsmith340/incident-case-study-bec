@@ -1,0 +1,14 @@
+// Step 2 - Victim sign-ins that do not match the user's own baseline
+let victim = "ana.ruiz@contoso.com";
+let alertIp = "198.51.100.23";
+let baseline = SigninLogs
+    | where UserPrincipalName == victim and ResultType == "0"
+    | where IPAddress != alertIp and Location == "US"
+    | summarize KnownIPs = make_set(IPAddress), KnownUAs = make_set(UserAgent);
+SigninLogs
+| where UserPrincipalName == victim and ResultType == "0"
+| extend KnownIPs = toscalar(baseline | project KnownIPs), KnownUAs = toscalar(baseline | project KnownUAs)
+| where not(set_has_element(KnownIPs, IPAddress))
+| where Location != "US" or not(set_has_element(KnownUAs, UserAgent))
+| project TimeGenerated, IPAddress, Location, AppDisplayName, UserAgent, AuthenticationDetail
+| order by TimeGenerated asc

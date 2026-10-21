@@ -1,0 +1,12 @@
+// Step 6 - Persistence: inbox rules and OAuth grants made from attacker IPs or with risky scopes
+let attackerIps = dynamic(["198.51.100.23", "198.51.100.41"]);
+let riskyScopes = dynamic(["Mail.Read", "Mail.ReadWrite", "Mail.Send", "offline_access", "Files.ReadWrite.All"]);
+union
+  (OfficeActivity
+   | where Operation in ("New-InboxRule", "Set-InboxRule") and ClientIP in (attackerIps)
+   | project TimeGenerated, Kind = "Inbox rule", Actor = UserId, IP = ClientIP, Detail = Parameters),
+  (AuditLogs
+   | where OperationName == "Consent to application"
+   | where IPAddress in (attackerIps) or Permissions has_any (riskyScopes)
+   | project TimeGenerated, Kind = "OAuth consent", Actor = InitiatedBy, IP = IPAddress, Detail = strcat(TargetApp, ": ", Permissions))
+| order by TimeGenerated asc
