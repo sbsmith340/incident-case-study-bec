@@ -1,0 +1,5 @@
+TimeGenerated,OperationName,InitiatedBy,IPAddress,TargetApp,Permissions,Result
+2026-09-14T13:40:33Z,Consent to application,ana.ruiz@contoso.com,198.51.100.23,Mail Organizer Pro,Mail.ReadWrite Mail.Send offline_access User.Read,success
+2026-09-14T15:37:00Z,Consent to application,grace.hall@contoso.com,192.0.2.12,Zoom,User.Read openid profile,success
+2026-09-15T21:43:00Z,Consent to application,ana.ruiz@contoso.com,192.0.2.12,Zoom,User.Read openid profile,success
+2026-09-15T21:49:00Z,Consent to application,grace.hall@contoso.com,192.0.2.12,Zoom,User.Read openid profile,success

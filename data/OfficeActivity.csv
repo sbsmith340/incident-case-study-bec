@@ -1,0 +1,58 @@
+TimeGenerated,UserId,Operation,ClientIP,Parameters,AppId
+2026-09-14T13:31:09Z,ana.ruiz@contoso.com,New-InboxRule,198.51.100.23,"[{""Name"":""Name"",""Value"":"".""},{""Name"":""SubjectOrBodyContainsWords"",""Value"":""invoice;payment;bank;wire""},{""Name"":""MoveToFolder"",""Value"":""RSS Feeds""},{""Name"":""MarkAsRead"",""Value"":""True""}]",
+2026-09-14T13:45:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:45:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:45:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:45:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:46:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:46:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:46:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:46:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:47:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:47:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:47:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:47:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:48:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:48:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:48:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:48:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:49:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:49:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:49:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:49:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:50:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:50:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:50:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:50:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:51:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:51:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:51:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:51:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:52:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:52:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:52:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:52:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:53:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:53:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:53:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:53:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:54:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:54:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:54:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:54:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:55:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:55:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:55:26Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:55:39Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:56:00Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T13:56:13Z,ana.ruiz@contoso.com,MailItemsAccessed,198.51.100.23,,Mail Organizer Pro
+2026-09-14T14:37:00Z,nina.rossi@contoso.com,New-InboxRule,192.0.2.12,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-14T14:58:00Z,marcus.green@contoso.com,New-InboxRule,192.0.2.10,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-14T19:02:00Z,kevin.ng@contoso.com,New-InboxRule,192.0.2.10,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-14T19:14:00Z,max.silva@contoso.com,New-InboxRule,192.0.2.10,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-14T20:53:00Z,jordan.lee@contoso.com,New-InboxRule,192.0.2.12,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-15T13:34:00Z,sam.ortiz@contoso.com,New-InboxRule,192.0.2.11,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-15T15:28:00Z,omar.haddad@contoso.com,New-InboxRule,192.0.2.11,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-15T16:08:00Z,ana.ruiz@contoso.com,New-InboxRule,192.0.2.11,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-15T17:52:00Z,grace.hall@contoso.com,New-InboxRule,192.0.2.11,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
+2026-09-15T18:10:00Z,ben.wright@contoso.com,New-InboxRule,192.0.2.11,"[{""Name"":""Name"",""Value"":""Newsletters""},{""Name"":""From"",""Value"":""news@updates.tailspintoys.com""},{""Name"":""MoveToFolder"",""Value"":""Newsletters""}]",
