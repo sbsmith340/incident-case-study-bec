@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pytest
+      - name: Re-run the investigation from raw data
+        run: python investigation/investigate.py
+      - name: Check answers, report consistency and that nothing changed
+        run: |
+          pytest -q tests
+          git diff --exit-code -- investigation/findings.json docs/FINDINGS.md
