@@ -1,0 +1,143 @@
+{
+  "steps": [
+    {
+      "question": "Which inbox rule triggered the alert, and who owns it?",
+      "answer": "ana.ruiz@contoso.com created rule '.' moving mail containing 'invoice;payment;bank;wire' to 'RSS Feeds' from 198.51.100.23",
+      "kql": "01-suspicious-inbox-rules.kql"
+    },
+    {
+      "question": "Which of ana.ruiz@contoso.com's successful sign-ins don't match the user's baseline?",
+      "answer": "3 sign-ins from 198.51.100.23, 198.51.100.41 (NL) with a headless-browser user agent; first at 13:21:15 UTC. MFA shows as satisfied by a token claim: consistent with adversary-in-the-middle session token theft, not password-only compromise.",
+      "kql": "02-victim-signin-anomalies.kql"
+    },
+    {
+      "question": "Did the attacker infrastructure sign in to any other account?",
+      "answer": "No other account",
+      "kql": "03-attacker-ip-pivot.kql"
+    },
+    {
+      "question": "How did the attacker get in?",
+      "answer": "ana.ruiz@contoso.com clicked https://fabrikarn-sharepoint.com/s/q3-payment-schedule at 13:18:04 UTC (3 minutes before the first malicious sign-in), from an email sent by docs-share@fabrikam-invoices.com with subject 'Shared with you: Q3 vendor payment schedule'. The message had been placed in the Junk folder, so the user opened it from Junk.",
+      "kql": "04-initial-access.kql"
+    },
+    {
+      "question": "How wide was the phishing campaign, and who else interacted with it?",
+      "answer": "19 recipients ({'Junked': 4, 'Delivered': 15}). Clicked through: ana.ruiz@contoso.com. Click blocked by Safe Links: kevin.ng@contoso.com.",
+      "kql": "05-campaign-scope.kql"
+    },
+    {
+      "question": "What persistence did the attacker establish?",
+      "answer": "1 inbox rule(s) and 1 OAuth consent(s): app 'Mail Organizer Pro' granted Mail.ReadWrite Mail.Send offline_access User.Read. The OAuth grant survives a password reset and must be revoked separately.",
+      "kql": "06-persistence.kql"
+    },
+    {
+      "question": "What did the attacker access?",
+      "answer": "46 MailItemsAccessed events from attacker IPs via {'Mail Organizer Pro': 46} between 13:45 and 13:56 UTC.",
+      "kql": "07-collection.kql"
+    },
+    {
+      "question": "Did the attacker use the mailbox to commit fraud?",
+      "answer": "3 emails with an external Reply-To (northwind.billing@outlook-mailbox.example) requesting changed bank details, sent to: marcus.green@contoso.com, billing@northwind-supplies.com, nina.rossi@contoso.com.",
+      "kql": "08-impact.kql"
+    },
+    {
+      "question": "Is the password spray seen earlier the same day part of this incident?",
+      "answer": "Unrelated: 203.0.113.200: 14 failures across 14 accounts, 0 successes. No successful sign-in, different infrastructure, and it ended 3.9 hours before the phishing email arrived.",
+      "kql": "09-rule-out-spray.kql"
+    }
+  ],
+  "iocs": {
+    "phishing_sender": "docs-share@fabrikam-invoices.com",
+    "phishing_domain": "fabrikam-invoices.com",
+    "phishing_url": "https://fabrikarn-sharepoint.com/s/q3-payment-schedule",
+    "attacker_ips": [
+      "198.51.100.23",
+      "198.51.100.41"
+    ],
+    "attacker_user_agents": [
+      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 HeadlessChrome/128.0 Safari/537.36"
+    ],
+    "malicious_oauth_app": [
+      "Mail Organizer Pro"
+    ],
+    "fraud_reply_to": [
+      "northwind.billing@outlook-mailbox.example"
+    ]
+  },
+  "scope": {
+    "compromised_accounts": [
+      "ana.ruiz@contoso.com"
+    ],
+    "victim_copy_delivery": "Junked",
+    "campaign_recipients": 19,
+    "clicked_through": [
+      "ana.ruiz@contoso.com"
+    ],
+    "click_blocked": [
+      "kevin.ng@contoso.com"
+    ],
+    "fraud_email_recipients": [
+      "marcus.green@contoso.com",
+      "billing@northwind-supplies.com",
+      "nina.rossi@contoso.com"
+    ],
+    "mail_items_accessed": 46
+  },
+  "timeline": [
+    {
+      "time": "2026-09-14T13:02:54Z",
+      "event": "Phishing campaign from docs-share@fabrikam-invoices.com reaches 19 mailboxes",
+      "tactic": "Initial Access (T1566.002)"
+    },
+    {
+      "time": "2026-09-14T13:18:04Z",
+      "event": "ana.ruiz@contoso.com clicks phishing link",
+      "tactic": "Execution (T1204.001)"
+    },
+    {
+      "time": "2026-09-14T13:21:15Z",
+      "event": "Sign-in as ana.ruiz@contoso.com from 198.51.100.23 (NL) to Office 365 Exchange Online",
+      "tactic": "Valid Accounts / stolen session (T1078.004, T1550.004)"
+    },
+    {
+      "time": "2026-09-14T13:26:02Z",
+      "event": "Sign-in as ana.ruiz@contoso.com from 198.51.100.23 (NL) to SharePoint Online",
+      "tactic": "Valid Accounts / stolen session (T1078.004, T1550.004)"
+    },
+    {
+      "time": "2026-09-14T13:31:09Z",
+      "event": "Inbox rule hides mail containing payment keywords",
+      "tactic": "Defense Evasion (T1564.008)"
+    },
+    {
+      "time": "2026-09-14T13:40:33Z",
+      "event": "OAuth consent to 'Mail Organizer Pro' (Mail.ReadWrite Mail.Send offline_access User.Read)",
+      "tactic": "Persistence (T1528)"
+    },
+    {
+      "time": "2026-09-14T13:45:00Z",
+      "event": "Bulk mailbox access begins (46 events)",
+      "tactic": "Collection (T1114.002)"
+    },
+    {
+      "time": "2026-09-14T15:04:50Z",
+      "event": "Sign-in as ana.ruiz@contoso.com from 198.51.100.41 (NL) to Office 365 Exchange Online",
+      "tactic": "Valid Accounts / stolen session (T1078.004, T1550.004)"
+    },
+    {
+      "time": "2026-09-14T15:12:30Z",
+      "event": "Payment-redirection email to marcus.green@contoso.com",
+      "tactic": "Impact: financial theft (T1657)"
+    },
+    {
+      "time": "2026-09-14T15:14:02Z",
+      "event": "Payment-redirection email to billing@northwind-supplies.com",
+      "tactic": "Impact: financial theft (T1657)"
+    },
+    {
+      "time": "2026-09-14T15:15:47Z",
+      "event": "Payment-redirection email to nina.rossi@contoso.com",
+      "tactic": "Impact: financial theft (T1657)"
+    }
+  ]
+}
