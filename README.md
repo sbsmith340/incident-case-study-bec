@@ -62,6 +62,11 @@ pip install pytest && pytest -q tests  # 10 tests
 ```
 No dependencies beyond the Python standard library. The KQL in `kql/` is written for Microsoft Sentinel / Azure Data Explorer against the same table schemas. The Python implementation is the executed reference.
 
+## Limitations and what's next
+- **One synthetic tenant, clean logs.** Real investigations deal with missing or delayed logs. Some of the events used here (mailbox access auditing, URL click events) depend on licensing and audit settings, so step one in a real case is confirming what was actually being logged.
+- **The KQL is written against the real table schemas, but the Python is the executed reference.** Next: run the `kql/` files on the Kusto emulator in CI, the way the [KQL detection library](https://github.com/sbsmith340/kql-detection-library) does.
+- **Containment is described, not automated.** A companion playbook (revoke sessions, remove the inbox rule and OAuth grant, block the IOCs) would turn sections 5 and 7 into code.
+
 ## Repo layout
 ```
 REPORT.md                     the incident report (start here)
